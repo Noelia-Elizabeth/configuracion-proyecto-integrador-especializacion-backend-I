@@ -1,0 +1,46 @@
+# Configuración para el microservicio movie-service.
+
+# Defino el puerto
+server:
+  port: 8081
+
+# Configuración de Eureka
+eureka:
+  server:
+    enable-self-preservaton: false
+  client:
+    fetch-registry: false
+    regiter-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      prefer-ip-address: false
+
+spring:
+# Configuración de MySQL
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/moviesDatabase
+    username: root
+    password: root
+# Configuración de RabbitMQ
+  sleuth:
+    sampler:
+      probability: 1.0
+  rabbitmq:
+    addresses: localhost:5672
+    virtual-host: app_vhost
+    username: username
+    password: password
+  zipkin:
+    baseUrl: http://localhost:9411/
+    enabled: true
+  sender:
+      type:rabbit
+    enabled:true

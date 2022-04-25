@@ -1,0 +1,17 @@
+# Configuración para el servidor de Eureka.
+
+# Defino el puerto
+server:
+  port: 8761
+
+# Configuración de Eureka
+eureka:
+  server:
+    enable-self-preservaton: false
+  client:
+    fetch-registry: false
+    regiter-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      prefer-ip-address: false
